@@ -1,7 +1,8 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 
 typedef SearchFilter<T> = List<String?> Function(T t);
-typedef ResultBuilder<T> = Widget Function(T t);
+typedef ResultBuilder<T> = Widget Function(int index, T t);
 typedef SortCallback<T> = int Function(T a, T b);
 
 /// This class helps to implement a search view, using [SearchDelegate].
@@ -184,7 +185,7 @@ class SearchPage<T> extends SearchDelegate<T?> {
         : result.isEmpty
             ? failure
             : ListView(
-                children: result.map(builder).toList(),
+                children: result.mapIndexed(builder).toList(),
               );
   }
 }

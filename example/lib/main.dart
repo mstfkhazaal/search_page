@@ -82,7 +82,7 @@ class MyHomePage extends StatelessWidget {
               person.age.toString(),
             ],
             sort: (a, b) => a.compareTo(b),
-            builder: (person) => ListTile(
+            builder: (index, person) => ListTile(
               title: Text(person.name),
               subtitle: Text(person.surname),
               trailing: Text('${person.age} yo'),

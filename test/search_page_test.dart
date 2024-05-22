@@ -43,7 +43,7 @@ void main() {
         suggestion: const Text('Suggestion text'),
         failure: const Text('Failure text'),
         filter: (string) => [string],
-        builder: Text.new,
+        builder: (index, item) => Text(item),
       );
 
       await tester.pumpWidget(
@@ -82,7 +82,7 @@ void main() {
         suggestion: const Text('Suggestion text'),
         failure: const Text('Failure text'),
         filter: (string) => [string],
-        builder: Text.new,
+        builder: (index, item) => Text(item),
       );
 
       await tester.pumpWidget(
@@ -114,7 +114,7 @@ void main() {
         suggestion: const Text('Suggestion text'),
         failure: const Text('Failure text'),
         filter: (string) => [string],
-        builder: Text.new,
+        builder: (index, item) => Text(item),
       );
 
       await tester.pumpWidget(
@@ -143,15 +143,14 @@ void main() {
       expect(find.text('Failure text'), findsNothing);
     });
 
-    testWidgets('Shows item list at init when "showItemsOnEmpty"',
-        (tester) async {
+    testWidgets('Shows item list at init when "showItemsOnEmpty"', (tester) async {
       final searchPage = SearchPage<String>(
         items: _mockList,
         suggestion: const Text('Suggestion text'),
         showItemsOnEmpty: true,
         failure: const Text('Failure text'),
         filter: (string) => [string],
-        builder: Text.new,
+        builder: (index, item) => Text(item),
       );
 
       await tester.pumpWidget(
@@ -197,7 +196,7 @@ void main() {
           suggestion: const Text('Suggestion text'),
           failure: const Text('Failure text'),
           filter: (string) => [string],
-          builder: Text.new,
+          builder: (index, item) => Text(item),
         );
 
         await tester.pumpWidget(
@@ -219,7 +218,7 @@ void main() {
         suggestion: const Text('Suggestion text'),
         failure: const Text('Failure text'),
         filter: (string) => [string],
-        builder: Text.new,
+        builder: (index, item) => Text(item),
       );
 
       await tester.pumpWidget(
@@ -254,7 +253,7 @@ void main() {
         suggestion: const Text('Suggestion text'),
         failure: const Text('Failure text'),
         filter: (string) => [string],
-        builder: Text.new,
+        builder: (index, item) => Text(item),
       );
 
       await tester.pumpWidget(
@@ -280,15 +279,14 @@ void main() {
 
     testWidgets('Custom searchFieldLabel value', (tester) async {
       const searchHint = 'custom search hint';
-      final defaultSearchHint =
-          const DefaultMaterialLocalizations().searchFieldLabel;
+      final defaultSearchHint = const DefaultMaterialLocalizations().searchFieldLabel;
 
       final searchPage = SearchPage<String>(
         items: _mockList,
         suggestion: const Text('Suggestion text'),
         failure: const Text('Failure text'),
         filter: (string) => [string],
-        builder: Text.new,
+        builder: (index, item) => Text(item),
         searchLabel: searchHint,
       );
 
@@ -307,15 +305,14 @@ void main() {
     testWidgets(
       'Default searchFieldLabel is used when it is set to null',
       (tester) async {
-        final searchHint =
-            const DefaultMaterialLocalizations().searchFieldLabel;
+        final searchHint = const DefaultMaterialLocalizations().searchFieldLabel;
 
         final searchPage = SearchPage<String>(
           items: _mockList,
           suggestion: const Text('Suggestion text'),
           failure: const Text('Failure text'),
           filter: (string) => [string],
-          builder: Text.new,
+          builder: (index, item) => Text(item),
         );
 
         await tester.pumpWidget(
@@ -342,7 +339,7 @@ void main() {
           string,
           string.length.toString(),
         ],
-        builder: (string) => ListTile(title: Text(string)),
+        builder: (index, string) => ListTile(title: Text(string)),
       );
 
       await tester.pumpWidget(
@@ -382,7 +379,7 @@ void main() {
           string,
           string?.length.toString(),
         ],
-        builder: (string) => ListTile(title: Text(string!)),
+        builder: (index, string) => ListTile(title: Text(string!)),
       );
 
       await tester.pumpWidget(
@@ -418,7 +415,7 @@ void main() {
         suggestion: const Text('Suggestion text'),
         failure: const Text('Failure text'),
         filter: (string) => [string],
-        builder: Text.new,
+        builder: (index, item) => Text(item),
       );
 
       await tester.pumpWidget(
@@ -445,7 +442,7 @@ void main() {
         suggestion: const Text('Suggestion text'),
         failure: const Text('Failure text'),
         filter: (string) => [string],
-        builder: Text.new,
+        builder: (index, item) => Text(item),
       );
 
       await tester.pumpWidget(
@@ -473,7 +470,7 @@ void main() {
         suggestion: const Text('Suggestion text'),
         failure: const Text('Failure text'),
         filter: (string) => [string],
-        builder: Text.new,
+        builder: (index, item) => Text(item),
       );
 
       await tester.pumpWidget(
@@ -494,8 +491,7 @@ void main() {
       expect(find.text('male'), findsNothing);
     });
 
-    testWidgets('itemStartsWith & itemEndsWith parameters works',
-        (tester) async {
+    testWidgets('itemStartsWith & itemEndsWith parameters works', (tester) async {
       final searchPage = SearchPage<String>(
         items: ['female', 'male', 'female123'],
         itemStartsWith: true,
@@ -503,7 +499,7 @@ void main() {
         suggestion: const Text('Suggestion text'),
         failure: const Text('Failure text'),
         filter: (string) => [string],
-        builder: Text.new,
+        builder: (index, item) => Text(item),
       );
 
       await tester.pumpWidget(
@@ -533,7 +529,7 @@ void main() {
           suggestion: const Text('Suggestion text'),
           failure: const Text('Failure text'),
           filter: (string) => [string],
-          builder: Text.new,
+          builder: (index, item) => Text(item),
         );
 
         await tester.pumpWidget(
@@ -559,7 +555,7 @@ void main() {
         suggestion: const Text('Suggestion text'),
         failure: const Text('Failure text'),
         filter: (string) => [string],
-        builder: (string) => ListTile(title: Text(string)),
+        builder: (index, string) => ListTile(title: Text(string)),
       );
 
       await tester.pumpWidget(
@@ -594,7 +590,7 @@ void main() {
           suggestion: const Text('Suggestion text'),
           failure: const Text('Failure text'),
           filter: (string) => [string],
-          builder: Text.new,
+          builder: (index, item) => Text(item),
         );
 
         await tester.pumpWidget(
@@ -647,7 +643,7 @@ void main() {
         suggestion: const Text('Suggestion text'),
         failure: const Text('Failure text'),
         filter: (string) => [string],
-        builder: Text.new,
+        builder: (index, item) => Text(item),
       );
 
       await tester.pumpWidget(
